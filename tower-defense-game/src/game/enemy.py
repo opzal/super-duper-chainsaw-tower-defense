@@ -29,19 +29,37 @@ class Enemy:
         else: 
             return False
 
-    def draw(self, surface):
-        pygame.draw.circle(surface, (220, 50, 50), (int(self.x), int(self.y)), 15)
+class BasicEnemy:
+    def __init__(self, x, y, vida, velocidad):
+        self.x = x
+        self.y = y
+        self.vida = vida
+        self.velocidad = velocidad
 
-class BasicEnemy(Enemy):
-    def __init__(self, x, y):
-        super().__init__(x, y, health=10, speed=100, damage=100)
+    def draw(self, pantalla):
+        """Dibuja al enemigo básico como un círculo rojo."""
+        pygame.draw.circle(pantalla, (255, 0, 0), (int(self.x), int(self.y)), 10)
 
 
-class FastEnemy(Enemy):
-    def __init__(self, x, y):
-        super().__init__(x, y, health=5, speed=80, damage=80)
+class HeavyEnemy:
+    def __init__(self, x, y, vida, velocidad):
+        self.x = x
+        self.y = y
+        self.vida = vida
+        self.velocidad = velocidad
+
+    def draw(self, pantalla):
+        """Dibuja al enemigo pesado como un círculo azul."""
+        pygame.draw.circle(pantalla, (0, 0, 255), (int(self.x), int(self.y)), 15)
 
 
-class HeavyEnemy(Enemy):
-    def __init__(self, x, y):
-        super().__init__(x, y, health=20, speed=120, damage=150)
+class FastEnemy:
+    def __init__(self, x, y, vida, velocidad):
+        self.x = x
+        self.y = y
+        self.vida = vida
+        self.velocidad = velocidad
+
+    def draw(self, pantalla):
+        """Dibuja al enemigo rápido como un círculo verde."""
+        pygame.draw.circle(pantalla, (0, 255, 0), (int(self.x), int(self.y)), 8)
